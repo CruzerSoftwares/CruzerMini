@@ -1,0 +1,3 @@
+<?php
+
+$loadedModules = [ 'webadmin' => 'Webadmin' ];
