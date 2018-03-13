@@ -52,59 +52,7 @@ if( !function_exists('_status')){
                case '2': $st = 'Blocked'; break;
                default: $st = 'Pending'; break;
            }
-        } elseif( $formated === false && $statusFor == 'shipments' ){
-           switch ($status) {
-               case '1': $st = 'Approved'; break;
-               case '2': $st = 'Available'; break;
-               case '3': $st = 'Cancelled'; break;
-               case '4': $st = 'Customs'; break;
-               case '5': $st = 'Delivered'; break;
-               case '6': $st = 'Delivered-Pending Payment'; break;
-               case '7': $st = 'Dispenser'; break;
-               case '8': $st = 'Distribution'; break;
-               case '9': $st = 'Earring Collection'; break;
-               case '10': $st = 'Effective'; break;
-               case '11': $st = 'In Transit'; break;
-               case '12': $st = 'In warehouse'; break;
-               case '13': $st = 'Invoiced'; break;
-               case '14': $st = 'On route'; break;
-               case '15': $st = 'Packaged'; break;
-               case '16': $st = 'Received Office'; break;
-               default: $st = 'Pending'; break;
-           }
-        } elseif( $formated === true && $statusFor == 'shipments' ){
-           switch ($status) {
-               case '1': $st = '<span class="label label-success">Approved</span>'; break;
-               case '2': $st = '<span class="label label-warning">Available</span>'; break;
-               case '3': $st = '<span class="label label-danger">Cancelled</span>'; break;
-               case '4': $st = '<span class="label label-info">Customs</span>'; break;
-               case '5': $st = '<span class="label label-success">Delivered</span>'; break;
-               case '6': $st = '<span class="label label-info">Delivered-Pending Payment</span>'; break;
-               case '7': $st = '<span class="label label-info">Dispenser</span>'; break;
-               case '8': $st = '<span class="label label-info">Distribution</span>'; break;
-               case '9': $st = '<span class="label label-info">Earring Collection</span>'; break;
-               case '10': $st = '<span class="label label-info">Effective</span>'; break;
-               case '11': $st = '<span class="label label-warning">In Transit</span>'; break;
-               case '12': $st = '<span class="label label-warning">In warehouse</span>'; break;
-               case '13': $st = '<span class="label label-success">Invoiced</span>'; break;
-               case '14': $st = '<span class="label label-info">On route</span>'; break;
-               case '15': $st = '<span class="label label-success">Packaged</span>'; break;
-               case '16': $st = '<span class="label label-success">Received Office</span>'; break;
-               default: $st = '<span class="label label-warning">Pending</span>'; break;
-           }
-       } elseif( $formated === false && $statusFor == 'notifications' ){
-           switch ($status) {
-               case '0': $st = 'Unread'; break;
-               case '1': $st = 'Viewed'; break;
-               default: $st = 'Pending'; break;
-           }
-        } elseif( $formated === true && $statusFor == 'notifications' ){
-           switch ($status) {
-               case '0': $st = '<span class="label label-warning">Unread</span>'; break;
-               case '1': $st = '<span class="label label-success">Viewed</span>'; break;
-               default: $st = '<span class="label label-warning">Pending</span>'; break;
-           }
-       } else{
+        } else{
            switch ($status) {
                case '1': $st = '<span class="label label-success">Active</span>'; break;
                case '0': $st = '<span class="label label-warning">Inactive</span>'; break;
