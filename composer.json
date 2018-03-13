@@ -1,15 +1,15 @@
 {
-    "name": "Cruzer Mini",
-    "description": "MVC PHP CMS",
+    "name": "cruzersoftwares/cruzermini",
+    "description": "A Modern CMS built using PHP 7",
     "license": "MIT",
     "type": "project",
     "keywords": [
         "cms",
         "Cruzer Mini"
     ],
-    "homepage": "https://cruzersoftwares.com/cruzerMini",
+    "homepage": "https://www.cruzermini.cruzersoftwares.com",
     "support": {
-        "issues": "https://github.com/cruzerMini"
+        "issues": "https://github.com/CruzerSoftwares/CruzerMini/issues"
     },
     "require": {
         "php" : ">=7",
