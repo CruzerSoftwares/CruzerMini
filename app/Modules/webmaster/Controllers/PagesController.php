@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
-use App\Models;
-use App\Models\Pages as Pages;
+namespace App\Modules\Webmaster\Controllers;
+use App\Modules\Webmaster\Models;
+use App\Modules\Webmaster\Models\Pages as Pages;
 
 class PagesController extends AppController {
 
@@ -41,12 +41,9 @@ class PagesController extends AppController {
         if( $alias == '' ){
             $this->handleError('danger','Invalid Request');
         }
-        global $db;
-        $query = $db->from('tbl_pages')->where('alias = ?', $alias);
-        foreach ($query as $row) {
-            echo "$row[title]\n";
-        }
-echo '<pre>';print_r($query);
+
+        $data = Pages::where('alias', $alias)->get()->first();
+
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
         }

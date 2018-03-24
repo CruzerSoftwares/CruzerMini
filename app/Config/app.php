@@ -1,3 +1,6 @@
 <?php
+global $loadedModules;
 
-$loadedModules = [ 'webadmin' => 'Webadmin' ];
+$loadedModules = [ 'webpanel' => 'webmaster' ];
+
+return $loadedModules;

@@ -1,8 +1,8 @@
 <?php 
 
-namespace App\Controllers;
-use App\Models;
-use App\Models\Users as Users;
+namespace App\Modules\Webmaster\Controllers;
+use App\Modules\Webmaster\Models;
+use App\Modules\Webmaster\Models\Users as Users;
 
 class UsersController extends AppController{
     

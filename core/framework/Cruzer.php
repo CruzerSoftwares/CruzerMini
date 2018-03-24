@@ -47,21 +47,21 @@ if( !function_exists('_status')){
     function _status( $status, $formated = true, $statusFor='default' ){
         if( $formated === false && $statusFor == 'default' ){
            switch ($status) {
-               case '1': $st = 'Active'; break;
-               case '0': $st = 'Inactive'; break;
-               case '2': $st = 'Blocked'; break;
-               default: $st = 'Pending'; break;
+               case '1': $statusFormated = 'Active'; break;
+               case '0': $statusFormated = 'Inactive'; break;
+               case '2': $statusFormated = 'Blocked'; break;
+               default: $statusFormated = 'Pending'; break;
            }
         } else{
            switch ($status) {
-               case '1': $st = '<span class="label label-success">Active</span>'; break;
-               case '0': $st = '<span class="label label-warning">Inactive</span>'; break;
-               case '2': $st = '<span class="label label-danger">Blocked</span>'; break;
-               default: $st = '<span class="label label-warning">Pending</span>'; break;
+               case '1': $statusFormated = '<span class="label label-success">Active</span>'; break;
+               case '0': $statusFormated = '<span class="label label-warning">Inactive</span>'; break;
+               case '2': $statusFormated = '<span class="label label-danger">Blocked</span>'; break;
+               default: $statusFormated = '<span class="label label-warning">Pending</span>'; break;
            }
        }
 
-       return $st;
+       return $statusFormated;
     }
 }
 
@@ -70,7 +70,6 @@ if( !function_exists('__status')){
        echo _status($status, $formated, $statusFor);
     }
 }
-
 
 if( !function_exists('_matchUrl')){
     function _matchUrl( $urlToMatch='', $requestUrl ){
@@ -256,7 +255,7 @@ if( !function_exists('_url')){
           return $url;
         }
 
-        return WEB_PATH.DS.$url;
+        return DS.$url;
    }
 }
 
@@ -505,7 +504,7 @@ if( !function_exists('_requestData')){
         switch( strtolower($format)){
             case 'upper' : return isset($from[$var]) ? strtoupper($from[$var]) : $default; break;
             case 'lower' : return isset($from[$var]) ? strtolower($from[$var]) : $default; break;
-            case 'int' : return isset($from[$var]) ? (int)$from[$var] : $default; break;
+            case 'int'   : return isset($from[$var]) ? (int)$from[$var] : $default; break;
             case 'float' : return isset($from[$var]) ? (float)$from[$var] : $default; break;
         }
     }
