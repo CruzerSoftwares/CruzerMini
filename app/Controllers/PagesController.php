@@ -8,31 +8,16 @@ class PagesController extends AppController {
 
     public function index($alias=''){
         if(!$alias) $alias = 'home';
+        global $db;
+        $query = $db->from('tbl_pages')->where('alias = ?', $alias);
+        $data = $query->fetch();
 
-        return $this->_view('pages.home', [
-            'data'      => [
-                'title'       => 'CruzerMini - PHP 7 CMS built on top of Cruzer Framework',
-                'description' => '<div class="jumbotron">
-                        <div class="container">
-                          <h1 class="display-5">CruzerMini</h1>
-                          <p>Powerfull PHP 7 CMS built on top of Cruzer Framework. Best suited for smaller and simple projects.</p>
-                          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
-                        </div>
-                      </div><h2>Features</h2>
-                    <ul>
-                    <li>MVC Style Design</li>
-                    <li>Small in Size, yet powerfull enough and loads faster</li>
-                    <li>Built in Authentication</li>
-                    <li>Built in CSRF Protection</li>
-                    <li>Built in Backend Panel</li>
-                    <li>Markdown Editor Integrated</li>
-                    <li>No Stupid Configurations</li>
-                    <li>Bootstrap 4 Responsive Theme</li>
-                    <li>No need to use Database if you don\'t need it.</li>
-                    <li>Supports multiple Database support if you need e.g. Flat Files, SQLite, MySQL, SQL Server, Oracle, Postgress, MongoDB and many more coming soon.</li>
-                    </ul>'
-                ],
-            'pageTitle' => 'CruzerMini - PHP 7 CMS built on top of Cruzer Framework'
+        if( $data == '' || $data== null ){
+            $this->handleError('danger','Invalid Request');
+        }
+        return $this->_view('pages.view', [
+            'data'      => $data,
+            'pageTitle' => $data['title']
         ]);
     }
 
@@ -43,10 +28,9 @@ class PagesController extends AppController {
         }
         global $db;
         $query = $db->from('tbl_pages')->where('alias = ?', $alias);
-        foreach ($query as $row) {
-            echo "$row[title]\n";
-        }
-echo '<pre>';print_r($query);
+        
+        $data = $query->fetch();
+
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
         }

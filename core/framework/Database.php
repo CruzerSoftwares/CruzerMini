@@ -56,14 +56,14 @@ class Database {
 								);
 					break;
 				case "sqlite": 
-					$this->dbh = new \PDO("sqlite:/path/to/database.sdb");
+					$this->dbh = new \PDO("sqlite:".$con['dbpath']);
 					break;
 				case "sqlitememory": 
 					$this->dbh = new \PDO("sqlite::memory");//to create tables in memory
 					break;
 				case "firebird": 
 					$this->dbh = new \PDO(
-							"firebird:dbname=localhost:D:\Programs\Firebird\DATABASE.FDB",
+							"firebird:dbname=".$con['host'].":".$con['dbpath'],
 							"SYSDBA",
 							"masterkey"
 						);

@@ -255,7 +255,7 @@ if( !function_exists('_url')){
           return $url;
         }
 
-        return DS.$url;
+        return APP_URL.$url;
    }
 }
 

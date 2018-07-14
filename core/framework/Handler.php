@@ -17,9 +17,9 @@ class Handler {
 	 */
 	protected function setLogging( ) {
 		ini_set('error_log', LOG_DIR.'/errors.log');
-		set_exception_handler(function($exception) {
+		/*set_exception_handler(function($exception) {
 		   error_log($exception);
-		});
+		});*/
 	}
 
 	/**

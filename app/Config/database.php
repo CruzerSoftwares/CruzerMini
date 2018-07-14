@@ -23,4 +23,5 @@ return [
     'charset'   => _config('DB_CHARSET'),
     'collation' => _config('DB_COLLATION'),
     'prefix'    => _config('DB_PREFIX'),
+    'dbpath'    => _config('DB_PATH'),
 ];

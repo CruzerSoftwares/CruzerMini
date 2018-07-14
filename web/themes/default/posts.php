@@ -8,7 +8,7 @@
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
   <meta name="keywords" content="<?php __(META_KEYWORDS);?>">
   <meta name="description" content="<?php __(META_DESCRIPTION);?>">
-  <title>404 - Page Not Found</title>
+  <title> <?php __(isset($pageTitle) ? $pageTitle : APP_TITLE);?></title>
   <?php __css([
     APP_URL.THEME_DIR.'/default/assets/css/bootstrap.min.css',
   ],false);
@@ -18,19 +18,14 @@
   <?php include_once('_header.php');?>
   <main role="main">
     <div class="container-fluid">
-        <div class="page_content">
-            <div class="row">
-              <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-               <h2>OOPS!</h2>
-               <h2>The page you are looking for doesn't exist.</h2>
-                <?php if(isset($bodyContent)) __('<p class="err">'.$bodyContent.'</p>',false);?>
-                <a class="btn" href="<?php __url('');?>"> Go back to Homepage</a>
-              </div>
-            </div>
-        </div>
+      <div class="row">
+        <div class="col-md-9 blog-main">
+        <?php echo $bodyContent;?>
+      </div>
+        <?php include_once('_sidebar.php');?>
+      </div>
     </div>
   </main>
-
     <?php require_once '_footer.php';?>
   </body>
 </html>
