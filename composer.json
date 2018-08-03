@@ -30,8 +30,5 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "*"
     }
 }
