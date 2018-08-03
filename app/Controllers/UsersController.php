@@ -9,7 +9,7 @@ class UsersController extends AppController{
     public function login(){
         return $this->_view('users.login', [
             'data'      => ['title' => 'Login', 'description' => ''],
-            'pageTitle' => 'CruzerMini Login'
+            'pageTitle' => 'Login'
         ]);
     }
     

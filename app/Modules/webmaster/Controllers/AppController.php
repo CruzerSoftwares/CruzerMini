@@ -5,7 +5,7 @@ namespace App\Modules\Webmaster\Controllers;
 class AppController {
 
 	protected $container = array();
-    public $theme  = 'default';
+    public $theme  = 'admin';
     public $layout = 'default';
 
     public function __construct(){
@@ -26,7 +26,7 @@ class AppController {
     }
 
 
-    public function _view( String $view, array $variables = array() ){
+    public function _view(  $view, array $variables = array() ){
     	foreach( $variables as $key => $val ){
 		    $$key = $val;
 		}
@@ -34,7 +34,7 @@ class AppController {
 		$view = str_replace('.', DS, $view);
 
 		ob_start();
-		include ( APP_DIR.DS.VIEW_DIR.DS.$view.'.php');
+		include ( APP_DIR.DS._config('MODULE_DIR_NAME').DS.MODULE_NAME.DS.VIEW_DIR.DS.$view.'.php');
 		$bodyContent = ob_get_clean();
 		$loadTheme  = empty($this->theme) ? 'default' : $this->theme;
 		$loadLayOut = empty($this->layout) ? 'default' : $this->layout;

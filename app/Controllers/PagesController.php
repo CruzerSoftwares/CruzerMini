@@ -6,30 +6,20 @@ use App\Models\Pages as Pages;
 
 class PagesController extends AppController {
 
-    public function index($alias=''){
-        if(!$alias) $alias = 'home';
-        global $db;
-        $query = $db->from('tbl_pages')->where('alias = ?', $alias);
-        $data = $query->fetch();
+    public function index(){
 
-        if( $data == '' || $data== null ){
-            $this->handleError('danger','Invalid Request');
-        }
-        return $this->_view('pages.view', [
-            'data'      => $data,
-            'pageTitle' => $data['title']
+        return $this->_view('pages.home', [
+            'data'      => Pages::get('home'),
+            'pageTitle' => APP_TITLE
         ]);
     }
-
 
     public function view($alias=''){
         if( $alias == '' ){
             $this->handleError('danger','Invalid Request');
         }
-        global $db;
-        $query = $db->from('tbl_pages')->where('alias = ?', $alias);
         
-        $data = $query->fetch();
+        $data = Pages::get($alias);
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
@@ -42,9 +32,29 @@ class PagesController extends AppController {
 
 
     public function contact(){
-        return $this->_view('pages.view', [
-            'data'      => ['title' => 'CruzerMini', 'description' => '<p>For help and support you can contact us <a href="mailto:support@cruzersoftwares.com">support@cruzersoftwares.com</a>.</p>'],
-            'pageTitle' => 'CruzerMini Home'
+        return $this->_view('pages.contact', [
+            'data' => Pages::get('contact-us'),
+            'pageTitle' => 'Contact Us'
+        ]);
+    }
+
+    public function contactForm(){
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= "From: "._postData('email') . "\r\n" .
+                    "CC: info@gmail.com";
+        $message = "A contact message from "._postData('name');
+        $message.= "<br/><br/><b>Message:</b> <br/><br/>"._postData('message');
+        $subject = _postData('subject');
+        if($subject=='') $subject = 'Contact Email';
+
+        mail('rn.kushwaha022@gmail.com', $subject, $message, $headers);
+
+        _setFlash('success','Your message has been sent successfully!', false);
+
+        return $this->_view('pages.contact', [
+            'data' => Pages::get('contact-us'),
+            'pageTitle' => 'Contact Us'
         ]);
     }
 
