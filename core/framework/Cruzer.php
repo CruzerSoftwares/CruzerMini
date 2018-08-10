@@ -206,7 +206,7 @@ if (!function_exists('__')) {
 if (!function_exists('_form')) {
     function _form($action = '', $options = array(), $csrf = true)
     {
-        $form = '<form action="'.$action.'"';
+        $form = '<form accept-charset="utf-8" action="'.$action.'"';
 
         if (isset($options) && isset($options['method'])) {
             $form.= ' method="'.$options['method'].'" ';
