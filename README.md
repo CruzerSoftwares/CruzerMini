@@ -1,6 +1,6 @@
 # CruzerMini
 
-- Built on top of PHP7 Framework: Cruzer Framework
+- Built on top of PHP7
 - MVC Style Design
 - Configurable Routing
 - SEO Friendly Urls

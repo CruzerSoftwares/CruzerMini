@@ -5,7 +5,8 @@
     "type": "project",
     "keywords": [
         "cms",
-        "CruzerMini"
+        "CruzerMini",
+        "PHP 7 CMS"
     ],
     "homepage": "https://cruzersoftwares.github.io/CruzerMini/",
     "support": {
