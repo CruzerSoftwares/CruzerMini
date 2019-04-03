@@ -10,7 +10,7 @@ class Posts extends App {
 	}
 	
 	public function actionAll(){
-	    $query = $this->db->from($this->table);
+	    $query = $this->db->from($this->table)->where('status', 1);
        	    return $query->fetchAll();
 	}
 	

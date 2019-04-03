@@ -8,13 +8,13 @@
   <meta name="keywords" content="<?php __(META_KEYWORDS);?>">
   <meta name="description" content="<?php __(META_DESCRIPTION);?>">
   <title> <?php __(isset($pageTitle) ? $pageTitle : APP_TITLE);?></title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" type="text/css" rel="stylesheet"
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" type="text/css" rel="stylesheet"
     media="screen,projection" />
   <?php __css([
     APP_URL.THEME_DIR.'/admin/css/style.css?da=das',
   ],false);
   ?>  
-  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   
@@ -25,9 +25,9 @@
     </div>
 
   <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" type="text/css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <?php __js([
     APP_URL.THEME_DIR.'/admin/js/init.js',
     APP_URL.THEME_DIR.'/admin/plugins/tinymce/tinymce.min.js',

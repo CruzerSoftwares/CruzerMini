@@ -29,7 +29,7 @@ class Handler
      */
     protected function setUp()
     {
-        date_default_timezone_set(_config('APP_TIMEZONE', 'Asia/Calcutta'));
+        date_default_timezone_set(_config('APP_TIMEZONE', 'Asia/Kolkata'));
 
         define('ERROR_LEVEL', _config('APP_ENV', 'production'));
         define('DEBUG_ERROR', _config('APP_DEBUG', 'Off'));
@@ -61,14 +61,14 @@ class Handler
                 break;
             case 'testing':
                 error_reporting(E_ALL ^ E_NOTICE);
-                                ini_set('display_errors', DEBUG_ERROR);
+                ini_set('display_errors', DEBUG_ERROR);
                 break;
             case 'production':
                 ini_set('display_errors', DEBUG_ERROR);
                 break;
             default:
                 error_reporting(E_ALL);
-                                ini_set('display_errors', DEBUG_ERROR);
+                ini_set('display_errors', DEBUG_ERROR);
                 break;
         }
     }
@@ -82,7 +82,7 @@ class Handler
         $this->setLogging();
 
         if (!file_exists(APP_DIR.DS.'Config'.DS.'config.ini')) {
-            throw new Exception('Configuration file "'.APP_DIR.DS.'Config'.DS.'config.ini" not present');
+            throw new \Exception('Configuration file "'.APP_DIR.DS.'Config'.DS.'config.ini" not present');
         }
 
         $contents   = file_get_contents(APP_DIR.DS.'Config'.DS.'config.ini');

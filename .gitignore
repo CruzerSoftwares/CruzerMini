@@ -1,3 +1,7 @@
+.project
+.settings
+.buildpath
+.idea
 composer.lock
 composer.phar
 errors.log

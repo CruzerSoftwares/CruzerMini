@@ -47,7 +47,7 @@ class Database
                         "mysql:host=".$con['host'].";dbname=".$con['database'],
                         $con['username'],
                         $con['password'],
-                        array(PDO::ATTR_PERSISTENT => true)
+                        array(\PDO::ATTR_PERSISTENT => true)
                     );
                     break;
                 case "postgres":
@@ -82,7 +82,7 @@ class Database
                     break;
                 case "dblib":
                     $this->dbh = new \PDO(
-                        "dblib:host=".$con['host'].":".$port.";dbname=".$con['database'],
+                        "dblib:host=".$con['host'].":".$con['port'].";dbname=".$con['database'],
                         $con['username'],
                         $con['password']
                     );

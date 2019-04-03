@@ -6,8 +6,9 @@ class App{
 	public $db;
 
 	public function __construct(){
-        global $db;
-        $this->db = $db;
+	    $connection = require_once APP_DIR.DS."Config".DS."database.php";
+	    $dbObj = new \Cruzer\Framework\Database($connection);
+	    $this->db = $dbObj->getConnection();
     }
 
     public function __call($method, $args) {

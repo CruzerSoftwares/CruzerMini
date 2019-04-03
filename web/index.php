@@ -23,6 +23,7 @@ require '../vendor/autoload.php';
 if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
+
 define('ROOT_DIR', dirname(dirname(__FILE__)));
 define('ROOT',     basename(dirname(dirname(__FILE__))));
 define('APP_DIR', ROOT_DIR.DS.'app');
@@ -32,12 +33,7 @@ $cruzerHandler = new Cruzer\Framework\Handler();
 $cruzerHandler->initilize();
 
 require_once APP_DIR.DS."Config".DS."app.php";
-$connection = require_once APP_DIR.DS."Config".DS."database.php";
-require_once APP_DIR.DS."Config".DS."routes.php";
+$routes = require_once APP_DIR.DS."Config".DS."routes.php";
 require_once __DIR__.'/../core/framework/Database.php';
-
-$dbObj = new Cruzer\Framework\Database($connection);
-global $db;
-$db = $dbObj->getConnection();
 $routes->serve(basename(__DIR__), $_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 

@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Controllers;
-use App\Models;
-use App\Models\Pages as Pages;
+use App\Models\Pages;
 
 class PagesController extends AppController {
 

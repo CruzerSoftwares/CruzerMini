@@ -1,5 +1,4 @@
 <?php
-global $loadedModules;
 
 $loadedModules = [ 'webpanel' => 'webmaster' ];
 

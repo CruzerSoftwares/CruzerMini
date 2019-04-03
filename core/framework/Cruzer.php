@@ -372,10 +372,10 @@ if (!function_exists('_js')) {
                 }
                 $js.= '<script src="'.str_replace(['http://','https://'], '//', $value).'" ';
                 if (!is_int($key)) {
-                    $css.= 'id="'.$key.'" ';
+                    $js.= 'id="'.$key.'" ';
                 }
                 if ($defer===true) {
-                    $css.= ' defer ';
+                    $js.= ' defer ';
                 }
                 $js.='></script>'."\r\n";
             }
@@ -385,7 +385,7 @@ if (!function_exists('_js')) {
             }
             $js.= '<script src="'.str_replace(['http://','https://'], '//', $links).'" ';
             if ($defer===true) {
-                $css.= ' defer ';
+                $js.= ' defer ';
             }
             $js.='></script>'."\r\n";
         }
@@ -404,7 +404,6 @@ if (!function_exists('_auth')) {
     function _auth($backend = true)
     {
         $for     = ($backend === true ? 'backend' : 'frontend');
-        $session = array();
 
         if (isset($_SESSION[$for]) &&
             isset($_SESSION[$for]['auth']) &&
@@ -448,7 +447,6 @@ if (!function_exists('_role')) {
     function _role($backend = true)
     {
         $for     = ($backend === true ? 'backend' : 'frontend');
-        $session = array();
 
         if (isset($_SESSION[$for]) &&
             isset($_SESSION[$for]['auth']) &&
@@ -594,7 +592,7 @@ if (!function_exists('_redirect')) {
 if (!function_exists('_upload')) {
     function _upload($tmp_name, $attachment)
     {
-        move_uploaded_file($tmp_name, UPLOAD_DIR."$dir/$attachment");
+        move_uploaded_file($tmp_name, UPLOAD_DIR."$attachment");
     }
 }
 
@@ -641,6 +639,7 @@ if (!function_exists('_numberToCurrency')) {
 if (!function_exists('getQueryStrings')) {
     function getQueryStrings($url = '')
     {
+        $data = array();
         $query = ltrim(strstr($url, '?'), '?');
         $arr = explode('&', $query);
         if (is_array($arr) && count($arr)) {

@@ -15,10 +15,12 @@ namespace App\Plugins\Imazer;
 */
 class Imazer {
 
-    $accepted_extensions = array( 'jpg', 'jpeg', 'png' );
-    // set final size of cropped image
-    $image_size_width = 400;
-    $image_size_height = 300;
+    const accepted_extensions = array( 'jpg', 'jpeg', 'png' );
+    const image_size_width = 400;
+    const image_size_height = 300;
+    public $imgurl;
+    public $imgsize;
+    public $orig_im;
     
     function __construct($imgurl){
         $this->imgurl = $imgurl;
