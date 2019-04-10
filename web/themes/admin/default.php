@@ -11,7 +11,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" type="text/css" rel="stylesheet"
     media="screen,projection" />
   <?php __css([
-    APP_URL.THEME_DIR.'/admin/css/style.css?da=das',
+    APP_URL.THEME_DIR.'/admin/css/style.css',
   ],false);
   ?>  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -25,8 +25,6 @@
     </div>
 
   <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" type="text/css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   <?php __js([
     APP_URL.THEME_DIR.'/admin/js/init.js',
@@ -41,11 +39,6 @@
         'autoScale'    	: false
     });
     
-    //image selected from file manager and show image from the path, callback
-    function responsive_filemanager_callback(field_id) {
-        var url = jQuery('#' + field_id).val();
-    }
-
     tinymce.init({
     selector: '.html-editor',
     theme: 'modern',
@@ -53,11 +46,11 @@
     plugins: [
       'advlist autolink autoresize autosave anchor link image imagetools lists charmap print preview hr  pagebreak spellchecker',
       'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime  media nonbreaking',
-      'save table contextmenu directionality emoticons template paste textcolor colorpicker responsivefilemanager'//importcss
+      'save table contextmenu directionality emoticons template paste textcolor colorpicker'//importcss
     ],
     link_list: [
-        {title: 'My page 1', value: 'http://www.tinymce.com'},
-        {title: 'My page 2', value: 'http://www.ephox.com'}
+        {title: 'Cruzer Hosting', value: 'https://www.cruzerhosting.com'},
+        {title: 'Cruzer Softwares', value: 'https://www.cruzersoftwares.com'}
     ],
     target_list: [
         {title: 'None', value: ''},
@@ -91,10 +84,7 @@
     { title: 'Test template 1', content: 'Test 1' },
     { title: 'Test template 2', content: 'Test 2' }
   ],
-  external_filemanager_path:"<?php echo APP_URL; ?>/filemanager/",
-  filemanager_title:"File Manager" ,
-  external_plugins: { "filemanager" : "<?php echo APP_URL.THEME_DIR; ?>/admin/plugins/tinymce/plugins/responsivefilemanager/plugin.min.js"},
-  toolbar: 'insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link unlink image anchor responsivefilemanager | print preview media fullpage code | forecolor backcolor emoticons addclasses ',
+  toolbar: 'insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link unlink image anchor | print preview media fullpage code | forecolor backcolor emoticons addclasses ',
   setup: function(editor) {
     editor.addButton('addclasses', {
       type: 'menubutton',

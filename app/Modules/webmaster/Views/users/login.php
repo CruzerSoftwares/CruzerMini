@@ -1,6 +1,5 @@
 <div class="row">
-     <?php __form(MODULE_ALIAS.'/auth', ['class' => 'col s6 offset-s3', 'target' => '_self']);echo password_hash("admin", PASSWORD_DEFAULT);
-?>
+     <?php __form(MODULE_ALIAS.'/auth', ['class' => 'col s6 offset-s3', 'target' => '_self']);?>
      <br/>
      <div class="card-panel vertically_centered">
       <div class="row">

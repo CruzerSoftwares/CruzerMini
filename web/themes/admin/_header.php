@@ -14,18 +14,16 @@
           </li> -->
           <li>
             <div class="user-view">
-              <div class="background">
-                <img src="<?php __url('image/userpic2.jpeg');?>" class="responsive-img">
+              <div class="background blue"> </div>
+              <div class="row">
+                <div class="col s4">
+                  <img class="circle responsive-img" src="<?php __url('themes/admin/img/user.png');?>">
+                </div>
+                <div class="col s8">
+                  <span class="white-text name"><?php __getAuthSession('first_name');?></span>
+                  <span class="white-text name mb0"><?php __getAuthSession('role');?></span>
+                </div>
               </div>
-              <a>
-                <img class="circle responsive-img" src="<?php __url('image/user.jpg');?>">
-              </a>
-              <a>
-                <span class="white-text name"><big><?php __getAuthSession('first_name');?></big></span>
-              </a>
-              <a>
-                <span class="white-text name"><?php __getAuthSession('role');?></span>
-              </a>
             </div>
           </li>
           <li> <a href="<?php __url(MODULE_ALIAS);?>" target="_self"><i class="material-icons">home</i> Dashboard</a> </li>
@@ -61,7 +59,6 @@
   </div>
 
 <ul class="menu" data-menu data-menu-toggle="#more_vertical">
-  <li> <a href="<?php __url('filemanager/dialog.php');?>" class="iframe-btn" target="_self">File Manager</a> </li>
   <li> <a href="<?php __url(MODULE_ALIAS.'/update-password');?>" target="_self">Update Password</a> </li>
   <li class="menu-separator"></li>
   <li> <a href="<?php __url(MODULE_ALIAS.'/logout');?>" target="_self">Logout</a> </li>
