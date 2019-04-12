@@ -32,13 +32,6 @@
   ],false);
   ?> 
   <script type="text/javascript">
-    jQuery('.iframe-btn').fancybox({	
-        'width'		: 900,
-        'height'	: 600,
-        'type'		: 'iframe',
-        'autoScale'    	: false
-    });
-    
     tinymce.init({
     selector: '.html-editor',
     theme: 'modern',
