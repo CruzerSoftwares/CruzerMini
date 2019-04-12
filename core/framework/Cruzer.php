@@ -262,8 +262,7 @@ if (!function_exists('_checkCSRF')) {
         }
 
         if ($csrf !== _CSRF() && $terminate === true) {
-            __($terminate_msg);
-            exit;
+            throw new Exception($terminate_msg);
         }
 
         return $csrf === _CSRF();
@@ -584,6 +583,7 @@ if (!function_exists('_redirect')) {
         if ($url=='back') {
             $url = $_SERVER['HTTP_REFERER'];
         }
+        header($_SERVER["SERVER_PROTOCOL"]." $code"); 
         header("Location: ".$url);
         exit();
     }
@@ -670,6 +670,7 @@ if (!function_exists('_requestData')) {
             case 'any':
                 $from = $_REQUEST;
                 break;
+            default: $from = $_REQUEST;
         }
 
         if ($format == null) {
@@ -693,6 +694,8 @@ if (!function_exists('_requestData')) {
             
         }
         
+        $retVal ='';
+
         switch (strtolower($format)) {
             case 'upper':
                 $retVal = isset($from[$var]) ? strtoupper($from[$var]) : $default;
