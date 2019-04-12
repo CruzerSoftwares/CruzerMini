@@ -92,19 +92,6 @@
                 <label for="tags">Tags</label>
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-               <textarea id="meta_description" name="meta_description" class="materialize-textarea"><?php __($data['meta_description']);?></textarea>
-                <label for="meta_description">Meta Description</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-               <textarea id="meta_keywords" name="meta_keywords" class="materialize-textarea"><?php __($data['meta_keywords']);?></textarea>
-                <label for="meta_keywords">Meta Keywords</label>
-            </div>
-        </div>
-
       <div class="row">
             <div class="input-field col s12">
                <button class="btn waves-effect waves-light blue" type="submit" name="submit" value="update">SAVE

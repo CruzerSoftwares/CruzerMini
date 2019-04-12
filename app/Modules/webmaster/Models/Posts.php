@@ -31,9 +31,6 @@ class Posts extends App {
 			'description'      => _postData('description'),
 			'image'            => _postData('image'),
 			'status'           => _postData('status'),
-			'meta_description' => _postData('meta_description'),
-			'meta_keywords'    => _postData('meta_keywords'),
-			'layout'           => _postData('layout'),
 		];
 
 	    $query = $this->db->update($this->table)->set($values)->where('id', _postData('id'));
@@ -56,9 +53,6 @@ class Posts extends App {
 			'description'      => _postData('description'),
 			'image'            => _postData('image'),
 			'status'           => _postData('status'),
-			'meta_description' => _postData('meta_description'),
-			'meta_keywords'    => _postData('meta_keywords'),
-			'layout'           => _postData('layout'),
 		];
 
 	    $query = $this->db->insertInto($this->table)->values($values);

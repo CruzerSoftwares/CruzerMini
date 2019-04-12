@@ -519,14 +519,10 @@ if (!function_exists('_flashSession')) {
             foreach ($session as $key => $value) {
                 if ($backend===true) {
                     $key2 = 'warning';
-                    if ($key=='danger') {
-                        $key2 = 'error';
-                    } elseif ($key=='error') {
+                    if ($key=='danger' || $key=='error') {
                         $key2 = 'error';
                     } elseif ($key=='success') {
                         $key2 = 'check_circle';
-                    } elseif ($key=='warning') {
-                        $key2 = 'warning';
                     } elseif ($key=='info') {
                         $key2 = 'priority_high';
                     }
@@ -536,23 +532,16 @@ if (!function_exists('_flashSession')) {
                               <div class="col m10">
                                 <div class="card-content white-text">
                                   <h5><i class="material-icons small-icons">'.$key2.'</i> '.ucfirst($key).'</h5>
-                                  <p>'.$value.'</p>
-                              </div>
-                            </div>
+                                  <p>'.$value.'</p> </div> </div>
                             <div class="col m2">
                               <a href="javascript:;" class="right white-text" target="_self">
                                 <i class="material-icons small-icons flashClose">close</i>
-                              </a>
-                            </div>
-                          </div>
-                         </div>';
+                              </a> </div> </div> </div>';
                 } else {
                     $str.= '<div class="alert alert-'.$key.' alert-dismissible" role="alert">
                             <button type="button" class="close" data-dismiss="alert">
                                 <span aria-hidden="true">×</span><span class="sr-only">Close</span>
-                            </button>
-                            <strong>'.ucfirst($key).'</strong> '.$value.'
-                          </div>';
+                            </button> <strong>'.ucfirst($key).'</strong> '.$value.' </div>';
                 }
             }
         }
@@ -655,8 +644,8 @@ if (!function_exists('getQueryStrings')) {
     }
 }
 
-if (!function_exists('_requestData')) {
-    function _requestData($var, $default = null, $method = 'post', $format = null)
+if (!function_exists('_getVarSource')) {
+    function _getVarSource($method)
     {
         switch (strtolower($method)) {
             case 'get': //$from = $_GET;
@@ -672,6 +661,39 @@ if (!function_exists('_requestData')) {
                 break;
             default: $from = $_REQUEST;
         }
+
+        return $from;
+    }
+}
+
+if (!function_exists('_formatVarFromSource')) {
+    function _formatVarFromSource($var, $default = null, $format = null)
+    {
+        if($format === null )  return;
+
+        switch (strtolower($format)) {
+            case 'upper':
+                $retVal = isset($from[$var]) ? strtoupper($from[$var]) : $default;
+            break;
+            case 'lower':
+                $retVal = isset($from[$var]) ? strtolower($from[$var]) : $default;
+            break;
+            case 'int':
+                $retVal = isset($from[$var]) ? (int)$from[$var] : $default;
+            break;
+            case 'float':
+                $retVal = isset($from[$var]) ? (float)$from[$var] : $default;
+            break;
+        }
+
+        return $retVal;
+    }
+}
+
+if (!function_exists('_requestData')) {
+    function _requestData($var, $default = null, $method = 'post', $format = null)
+    {
+        $from = _getVarSource($method);
 
         if ($format == null) {
             if (!isset($from[$var])) {
@@ -691,25 +713,9 @@ if (!function_exists('_requestData')) {
 
                 return $from[$var];
             }
-            
         }
         
-        $retVal ='';
-
-        switch (strtolower($format)) {
-            case 'upper':
-                $retVal = isset($from[$var]) ? strtoupper($from[$var]) : $default;
-            break;
-            case 'lower':
-                $retVal = isset($from[$var]) ? strtolower($from[$var]) : $default;
-            break;
-            case 'int':
-                $retVal = isset($from[$var]) ? (int)$from[$var] : $default;
-            break;
-            case 'float':
-                $retVal = isset($from[$var]) ? (float)$from[$var] : $default;
-            break;
-        }
+        $retVal = _formatVarFromSource($var, $default = null, $format = null);
         return $retVal;
     }
 }

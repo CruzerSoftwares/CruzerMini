@@ -1,27 +1,14 @@
 <?php
-/**
- * Database handling for CruzerMini App.
- *
- * PHP version 7.2
- *
- * @category  PHP
- * @package   Core
- * @author    RN Kushwaha <Rn.kushwaha022@gmail.com>
- * @copyright 2018 Cruzer Softwares
- * @license   https://github.com/CruzerSoftwares/CruzerMini/blob/master/licence.txt MIT License
- * @version   GIT: 1.0.0
- * @link      https://cruzersoftwares.github.io/CruzerMini/
- */
 
 namespace Cruzer\Framework;
 
 /**
  * This class handles database connection via user provided configuration
  *
- * @category  PHP
+ * @category  Database
  * @package   Core
  * @author    RN Kushwaha <Rn.kushwaha022@gmail.com>
- * @copyright 2018 Cruzer Softwares
+ * @copyright 2019 Cruzer Softwares
  * @license   https://github.com/CruzerSoftwares/CruzerMini/blob/master/licence.txt MIT License
  * @version   Release: 1.0.0
  * @link      https://cruzersoftwares.github.io/CruzerMini/
@@ -37,37 +24,26 @@ class Database
             switch ($con['driver']) {
                 case "mysql":
                     $this->dbh = new \PDO(
-                        "mysql:host=".$con['host'].";dbname=".$con['database'],
-                        $con['username'],
-                        $con['password']
+                        "mysql:host=".$con['host'].";dbname=".$con['database'], $con['username'], $con['password']
                     );
                     break;
                 case "mysqlp":
                     $this->dbh = new \PDO(
-                        "mysql:host=".$con['host'].";dbname=".$con['database'],
-                        $con['username'],
-                        $con['password'],
+                        "mysql:host=".$con['host'].";dbname=".$con['database'], $con['username'], $con['password'],
                         array(\PDO::ATTR_PERSISTENT => true)
                     );
                     break;
                 case "postgres":
                     $this->dbh = new \PDO(
-                        "pgsql:dbname=".$con['database'].";host=".$con['host'],
-                        $con['username'],
-                        $con['password']
+                        "pgsql:dbname=".$con['database'].";host=".$con['host'], $con['username'], $con['password']
                     );
                     break;
                 case "sqlite":
                     $this->dbh = new \PDO("sqlite:".$con['dbpath']);
                     break;
-                case "sqlitememory":
-                    $this->dbh = new \PDO("sqlite::memory");//to create tables in memory
-                    break;
                 case "firebird":
                     $this->dbh = new \PDO(
-                        "firebird:dbname=".$con['host'].":".$con['dbpath'],
-                        "SYSDBA",
-                        "masterkey"
+                        "firebird:dbname=".$con['host'].":".$con['dbpath'], "SYSDBA", "masterkey"
                     );
                     break;
                 case "informix":
@@ -76,22 +52,18 @@ class Database
                 case "oracle":
                     $this->dbh = new \PDO("OCI:", $con['username'], $con['password']);
                     break;
-                    //new \PDO("OCI:dbname=".$con['database'];charset=UTF-8", $con['username'], $con['password']);
                 case "odbc":
                     $this->dbh = new \PDO("odbc:Driver={Microsoft Access Driver (*.mdb)};Dbq=C:\accounts.mdb;Uid=Admin");
                     break;
                 case "dblib":
                     $this->dbh = new \PDO(
-                        "dblib:host=".$con['host'].":".$con['port'].";dbname=".$con['database'],
-                        $con['username'],
-                        $con['password']
+                        "dblib:host=".$con['host'].":".$con['port'].";dbname=".$con['database'], $con['username'], $con['password']
                     );
                     break;
                 case "ibm":
                     $this->dbh = new \PDO(
                         "ibm:DRIVER={IBM DB2 ODBC DRIVER};DATABASE=accounts; HOST=1.2.3,4;PORT=56789;PROTOCOL=TCPIP;",
-                        $con['username'],
-                        $con['password']
+                        $con['username'], $con['password']
                     );
                     break;
             }
