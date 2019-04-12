@@ -1,27 +1,13 @@
 <?php
-/**
- * Routes for CruzerMini App.
- *
- * PHP version 7.2
- *
- * @category  PHP
- * @package   Core
- * @author    RN Kushwaha <Rn.kushwaha022@gmail.com>
- * @copyright 2018 Cruzer Softwares
- * @license   https://github.com/CruzerSoftwares/CruzerMini/blob/master/licence.txt MIT License
- * @version   GIT: 1.0.0
- * @link      https://cruzersoftwares.github.io/CruzerMini/
- */
-
 namespace Cruzer\Framework;
 
 /**
  * This class handles request by dynamic passing routeInfo to the serve method
  *
- * @category  PHP
+ * @category  Routes
  * @package   Core
  * @author    RN Kushwaha <Rn.kushwaha022@gmail.com>
- * @copyright 2018 Cruzer Softwares
+ * @copyright 2019 Cruzer Softwares
  * @license   https://github.com/CruzerSoftwares/CruzerMini/blob/master/licence.txt MIT License
  * @version   Release: 1.0.0
  * @link      https://cruzersoftwares.github.io/CruzerMini/
@@ -73,7 +59,7 @@ class Routes
     public function serve($dir, $request, $method)
     {
         // Fetch method and URI from somewhere
-        $uri        = str_replace(ROOT.DS.$dir."/", "", $request);
+        $uri = str_replace(ROOT.DS.$dir."/", "", $request);
 
         // Strip query string (?foo=bar) and decode URI
         if (false !== $pos = strpos($uri, '?')) {
@@ -111,7 +97,7 @@ class Routes
                 $handler = $routeInfo[1];
                 $vars    = $routeInfo[2];
 
-                if (strpos($handler, '@')!= false) {
+                if (strpos($handler, '@')!== false) {
                     $className = strstr($handler, '@', true);
                     $methodName = ltrim(strstr($handler, '@', false), '@');
 

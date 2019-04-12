@@ -344,7 +344,7 @@ if (!function_exists('__css')) {
 }
 
 if (!function_exists('_url')) {
-    function _url($url, $absolute = true, array $options = array())
+    function _url($url, $absolute = true)
     {
         if ($absolute === true) {
             return $url;
@@ -462,7 +462,7 @@ if (!function_exists('_setAuthSession')) {
     function _setAuthSession($rows, $backend = true)
     {
         $for = ($backend === true ? 'backend' : 'frontend');
-        $filtered = array_filter($rows, function ($key) use ($rows) {
+        $filtered = array_filter($rows, function ($key) {
             return !in_array($key, ['password']);
         }, ARRAY_FILTER_USE_KEY);
 
@@ -591,9 +591,9 @@ if (!function_exists('_redirect')) {
 
 if (!function_exists('_upload')) {
     function _upload($tmp_name, $attachment)
-    {
-        move_uploaded_file($tmp_name, UPLOAD_DIR."$attachment");
-    }
+    {use ($rows)
+     use ($rows)me, UPLOAD_DIR."$attachment");
+    }use ($rows)
 }
 
 if (!function_exists('_slug')) {
@@ -619,7 +619,8 @@ if (!function_exists('_numberToCurrency')) {
             $restunits = (strlen($restunits)%2 == 1)?"0".$restunits:$restunits;
 
             $expunit = str_split($restunits, 2);
-            for ($i=0; $i<sizeof($expunit); $i++) {
+            $sizeof  = sizeof($expunit);
+            for ($i=0; $i<$sizeof; $i++) {
                 // creates each of the 2's group and adds a comma to the end
                 if ($i==0) {
                     // if is first value , convert into integer
@@ -672,38 +673,41 @@ if (!function_exists('_requestData')) {
         }
 
         if ($format == null) {
-            if (isset($from[$var])) {
-                if ($default == null) {
-                    if ($from[$var]== '') {
-                        return $default;
-                    } else {
-                        return $from[$var];
-                    }
-                } else {
-                    if ($from[$var]== '') {
-                        return $default;
-                    } else {
-                        return $from[$var];
-                    }
-                }
-            } else {
+            if (!isset($from[$var])) {
                 return $default;
             }
+
+            if ($default == null) {
+                if ($from[$var]== '') {
+                    return $default;
+                }
+                
+                return $from[$var];
+            } else {
+                if ($from[$var]== '') {
+                    return $default;
+                }
+
+                return $from[$var];
+            }
+            
         }
+        
         switch (strtolower($format)) {
             case 'upper':
-                return isset($from[$var]) ? strtoupper($from[$var]) : $default;
+                $retVal = isset($from[$var]) ? strtoupper($from[$var]) : $default;
             break;
             case 'lower':
-                return isset($from[$var]) ? strtolower($from[$var]) : $default;
+                $retVal = isset($from[$var]) ? strtolower($from[$var]) : $default;
             break;
             case 'int':
-                return isset($from[$var]) ? (int)$from[$var] : $default;
+                $retVal = isset($from[$var]) ? (int)$from[$var] : $default;
             break;
             case 'float':
-                return isset($from[$var]) ? (float)$from[$var] : $default;
+                $retVal = isset($from[$var]) ? (float)$from[$var] : $default;
             break;
         }
+        return $retVal;
     }
 }
 
@@ -724,7 +728,7 @@ if (!function_exists('_postData')) {
 function _encodeString($string)
 {
     $result       = $string;
-    $arrayLetters = array('R', 'N', 'K', 'U', 'S', 'H', 'W', 'A');
+    $arrayLetters = array('C', 'R', 'U', 'Z', 'M', 'I', 'N', 'I');
     $limit        = count($arrayLetters) - 1;
     $num          = mt_rand(0, $limit);
 
@@ -741,9 +745,10 @@ function _decodeString($string)
     $string = str_replace('~~', '=', $string);
     $result = base64_decode($string);
     list($result, $letra) = explode('::', $result);
-    $arrayLetters = array('R', 'N', 'K', 'U', 'S', 'H', 'W', 'A');
+    $arrayLetters = array('C', 'R', 'U', 'Z', 'M', 'I', 'N', 'I');
+    $totalCount = count($arrayLetters);
 
-    for ($i = 0; $i < count($arrayLetters); $i++) {
+    for ($i = 0; $i <$totalCount; $i++) {
         if ($arrayLetters[$i] == $letra) {
             for ($j = 1; $j <= $i; $j++) {
                 $result = base64_decode($result);
