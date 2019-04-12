@@ -591,9 +591,9 @@ if (!function_exists('_redirect')) {
 
 if (!function_exists('_upload')) {
     function _upload($tmp_name, $attachment)
-    {use ($rows)
-     use ($rows)me, UPLOAD_DIR."$attachment");
-    }use ($rows)
+    {
+        move_uploaded_file($tmp_name, UPLOAD_DIR."$attachment");
+    }
 }
 
 if (!function_exists('_slug')) {

@@ -1,5 +1,9 @@
 # CruzerMini
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CruzerSoftwares/CruzerMini/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/CruzerSoftwares/CruzerMini/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/CruzerSoftwares/CruzerMini/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/CruzerSoftwares/CruzerMini/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/CruzerSoftwares/CruzerMini/badges/build.png?b=master)](https://scrutinizer-ci.com/g/CruzerSoftwares/CruzerMini/build-status/master)
+
 - Built on top of PHP7
 - MVC Style Design
 - Configurable Routing
