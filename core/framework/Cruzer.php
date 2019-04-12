@@ -667,9 +667,10 @@ if (!function_exists('_getVarSource')) {
 }
 
 if (!function_exists('_formatVarFromSource')) {
-    function _formatVarFromSource($var, $default = null, $format = null)
+    function _formatVarFromSource($from, $var, $default = null, $format = null)
     {
         if($format === null )  return;
+        $retVal = '';
 
         switch (strtolower($format)) {
             case 'upper':
@@ -715,7 +716,7 @@ if (!function_exists('_requestData')) {
             }
         }
         
-        $retVal = _formatVarFromSource($var, $default = null, $format = null);
+        $retVal = _formatVarFromSource($from, $var, $default, $format );
         return $retVal;
     }
 }
