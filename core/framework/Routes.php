@@ -45,7 +45,7 @@ class Routes
         if (array_key_exists($uriAr[1], $loadedModules)) {
             return $loadedModules[$uriAr[1]];
         }
-        return false;
+        return;
     }
 
     /**
@@ -72,7 +72,9 @@ class Routes
             if (!defined('MODULE_NAME')) {
                 define('MODULE_NAME', $currentModule);
             }
-            require_once MODULE_PATH.DS.$currentModule.DS."module.php";
+            if($currentModule){
+                require_once MODULE_PATH.DS.$currentModule.DS."module.php";
+            }
         } else {
             $this->sendResponse($uri, $method);
         }
