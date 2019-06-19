@@ -1,17 +1,16 @@
 <?php
 namespace App\Models;
 
-class App{
+class App extends \Dolphin\Mapper\ORM {
 
 	public $db;
 
+/* 
 	public function __construct(){
-	    $connection = require_once APP_DIR.DS."Config".DS."database.php";
-	    $dbObj = new \Cruzer\Framework\Database($connection);
-	    $this->db = $dbObj->getConnection();
-    }
-
-    public function __call($method, $args) {die('call');
+	    
+	}
+	
+    public function __call($method, $args) {
       $class = get_called_class();
 		if(class_exists($class)){
 			$reflector = new \ReflectionClass($class);
@@ -44,6 +43,6 @@ class App{
 		}
 
 		throw new \Exception("Method `$method()` is not defined!");
-	}
+	} */
 
 }

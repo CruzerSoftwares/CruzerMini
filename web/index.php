@@ -34,6 +34,5 @@ $cruzerHandler->initilize();
 
 require_once APP_DIR.DS."Config".DS."app.php";
 $routes = require_once APP_DIR.DS."Config".DS."routes.php";
-require_once __DIR__.'/../core/framework/Database.php';
 $routes->serve(basename(__DIR__), $_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 

@@ -8,7 +8,7 @@ class PagesController extends AppController {
     public function index(){
 
         return $this->_view('pages.home', [
-            'data'      => Pages::get('home'),
+            'data'      => Pages::select('description')->where("alias = 'home'")->first(),
             'pageTitle' => APP_TITLE
         ]);
     }
@@ -18,21 +18,21 @@ class PagesController extends AppController {
             $this->handleError('danger','Invalid Request');
         }
         
-        $data = Pages::get($alias);
+        $data = Pages::where("alias = '".$alias."'")->first();
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
         }
         return $this->_view('pages.view', [
             'data'      => $data,
-            'pageTitle' => $data['title']
+            'pageTitle' => $data->title
         ]);
     }
 
 
     public function contact(){
         return $this->_view('pages.contact', [
-            'data' => Pages::get('contact-us'),
+            'data' =>  Pages::where("alias = 'contact-us'")->first(),
             'pageTitle' => 'Contact Us'
         ]);
     }
@@ -52,7 +52,7 @@ class PagesController extends AppController {
         _setFlash('success','Your message has been sent successfully!', false);
 
         return $this->_view('pages.contact', [
-            'data' => Pages::get('contact-us'),
+            'data' =>  Pages::where("alias = 'contact-us'")->first(),
             'pageTitle' => 'Contact Us'
         ]);
     }

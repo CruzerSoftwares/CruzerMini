@@ -2,14 +2,14 @@
 	<div class="container">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="<?php __url('');?>" target="_self">Home</a></li>
-			<li class="breadcrumb-item active"><?php __($data['title']);?></li>
+			<li class="breadcrumb-item active"><?php __($data->title);?></li>
 		</ol>
 	</div>
 </div>
 
-<?php if($data['layout']==1){//raw html
- 		__($data['description'],false);
- } elseif($data['layout']==2){//left sidebar?>
+<?php if($data->layout==1){//raw html
+ 		__($data->description,false);
+ } elseif($data->layout==2){//left sidebar?>
 <div class="page-content1 no-margin-bottom">
 	<section>
 		<div class="container">
@@ -54,20 +54,20 @@
 					</form>
 				</div>
 				<div class="col-md-9">
-					<?php echo $data['description'];?>
+					<?php echo $data->description;?>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
 	
-<?php } elseif($data['layout']==3){//right sidebar?>
+<?php } elseif($data->layout==3){//right sidebar?>
 <div class="page-content1 no-margin-bottom">
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9">
-					<?php echo $data['description'];?>
+					<?php echo $data->description;?>
 				</div>
 				<div class="col-md-3"> 
 					<h2 class="heading">Write to Us</h2>
@@ -119,7 +119,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<?php __($data['description'],false);?>
+					<?php __($data->description,false);?>
 				</div>
 			</div>
 		</div>

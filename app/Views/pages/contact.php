@@ -49,7 +49,7 @@
 	<div class="col-md-3">
 		<div class="sidebar">
 			<div class="widget">
-				<?php __($data['description'], false);?>
+				<?php __($data->description, false);?>
 			</div>
 		</div>
 	</div>
