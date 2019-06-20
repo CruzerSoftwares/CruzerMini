@@ -10,19 +10,15 @@ namespace App\Config;
 
 class Credentials
 {
-    public static $driver = 'mysql';
-    public static $db = 'cruzermini';
-    public static $user = 'root';
-    public static $password = 'admin123';
-    public static $prefix = 'tbl_';
-    public static $charset = 'utf-8';
-
     public static function __callStatic($name, $arguments)
     {
+        $dbCredentials = require('database.php');
         $var = $arguments[0];
-
-        $c = new \ReflectionClass('\App\Config\Credentials');
-
-        return $c->getStaticPropertyValue($var);
+    
+        if(array_key_exists($var, $dbCredentials)){
+            return $dbCredentials[$var];
+        }
+        
+        throw new \Exception("The requested key $var not found!", 1);
     }
 }
