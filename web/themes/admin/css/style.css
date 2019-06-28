@@ -41,5 +41,7 @@ body.fullpage-container #pageContent{padding: initial}
 .small-icons{height: 42px!important;line-height: 42px!important;}
 .inline-form{display: inline-block;padding: 0 !important}
 .inline-form .noborder{border: 0;background: transparent;}
+.flashContainer .card-content{padding: 5px 10px;}
+.flashContainer h5{margin:0;}
 
 

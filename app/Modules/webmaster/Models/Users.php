@@ -3,18 +3,6 @@ namespace App\Modules\Webmaster\Models;
 
 class Users extends App {
 
-	protected $table = 'tbl_users';
-
-	public function actionAll(){
-	    $query = $this->db->from($this->table);
-        return $query->fetchAll();
-	}
-
-	public function actionGet($id){
-	    $query = $this->db->from($this->table)->where('id', $id);
-        return $query->fetch();
-	}
-
 	public function actionGetByEmail($email){
 		// echo password_hash("Indi@2O1!budd$", PASSWORD_DEFAULT);
 	    $query = $this->db->from($this->table)->where('status',1)->where('email', $email);

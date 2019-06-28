@@ -3,17 +3,7 @@ namespace App\Modules\Webmaster\Models;
 
 class Reviews extends App {
 
-	protected $table = 'tbl_testimonials';
-
-	public function actionAll(){
-	    $query = $this->db->from($this->table);
-        return $query->fetchAll();
-	}
-
-	public function actionGet($id){
-	    $query = $this->db->from($this->table)->where('id', $id);
-        return $query->fetch();
-	}
+	protected $table = 'testimonials';
 
 	public function actionUpdate(){
 		$values = [

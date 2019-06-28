@@ -7,11 +7,11 @@
     // $('.parallax').parallax();
     $('[data-menu]').menu();
     $('.collapsible').collapsible();
-    $('.button-collapse').sideNav();
+    if ($('.button-collapse').length) $('.button-collapse').sideNav();
     $('.materialboxed').materialbox();
     // $('.sidenav').sidenav();
     $(".dropdown-trigger").dropdown();
-    $('select').material_select();
+    if ($('select').length) $('select').material_select();
     
     $('.modal').modal({
       dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -24,6 +24,6 @@
 
     $(document).on('click', '.flashClose', function(){
       $(this).parents('.flashContainer').fadeOut(500);
-    })
+    });
   });
 })(jQuery);

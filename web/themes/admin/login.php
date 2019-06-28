@@ -8,11 +8,10 @@
   <meta name="keywords" content="<?php __(META_KEYWORDS);?>">
   <meta name="description" content="<?php __(META_DESCRIPTION);?>">
   <title> <?php __(isset($pageTitle) ? $pageTitle : APP_TITLE);?></title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" type="text/css" rel="stylesheet"
-    media="screen,projection" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <?php __css([
-    APP_URL.THEME_DIR.'/admin/css/style.css?da=das',
-  ],false);
+    APP_URL.THEME_DIR.'/admin/css/style.css',
+  ],false, 12);
   ?>  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -25,10 +24,10 @@
   <?php require_once '_footer.php';?>
 
   <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <?php __js([
     APP_URL.THEME_DIR.'/admin/js/init.js',
-  ],false);
+  ],false, 12);
   ?> 
   </body>
 </html>

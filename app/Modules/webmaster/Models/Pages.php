@@ -3,18 +3,6 @@ namespace App\Modules\Webmaster\Models;
 
 class Pages extends App {
 
-	protected $table = 'tbl_pages';
-
-	public function actionAll(){
-	    $query = $this->db->from($this->table);
-        return $query->fetchAll();
-	}
-
-	public function actionGet($id){
-	    $query = $this->db->from($this->table)->where('id', $id);
-        return $query->fetch();
-	}
-
 	public function actionUpdate(){
 		$alias               = _postData('alias');
 

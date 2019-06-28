@@ -2,7 +2,7 @@
 $routes = new Cruzer\Framework\Routes();
 
 $routes->addGroup('/webpanel', function ($routes) {
-	$routes->get('/', 'App\Modules\Webmaster\Controllers\PagesController@dashboard');
+	$routes->get('', 'App\Modules\Webmaster\Controllers\PagesController@dashboard');
 	$routes->get('/dashboard', 'App\Modules\Webmaster\Controllers\PagesController@dashboard');
 	$routes->all('/auth', 'App\Modules\Webmaster\Controllers\UsersController@login');
 	$routes->all('/logout', 'App\Modules\Webmaster\Controllers\UsersController@logout');

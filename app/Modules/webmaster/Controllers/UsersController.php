@@ -8,10 +8,10 @@ class UsersController extends AppController{
     public function login(){
         _checkAuth(true, true);
         $this->layout = 'login';
-
-        if(isset($_POST['actiontask'])){
-            $data = Users::getByEmail(_postData('email'));
         
+        if(isset($_POST['actiontask'])){
+            $data = Users::where('status=1')->where('email = :email',_postData('email'))->first()->asArray();
+            
             if ($data !=null && password_verify(_postData('password'), $data['password'])) {
                 _setAuthSession($data);
                 _checkAuth(true, true);

@@ -515,19 +515,23 @@ if (!function_exists('_flashSession')) {
         }
 
         if (count($session)) {
-            $str     = '<br/><br/>';
+            $str     = '';
             foreach ($session as $key => $value) {
                 if ($backend===true) {
                     $key2 = 'warning';
+                    $color = '';
                     if ($key=='danger' || $key=='error') {
                         $key2 = 'error';
+                        $color = 'red';
                     } elseif ($key=='success') {
                         $key2 = 'check_circle';
+                        $color = 'green';
                     } elseif ($key=='info') {
+                        $color = 'blue';
                         $key2 = 'priority_high';
                     }
 
-                    $str.= '<div class="card green lighten-1 flashContainer">
+                    $str.= '<div class="card '.$color.' lighten-1 flashContainer">
                             <div class="row">
                               <div class="col m10">
                                 <div class="card-content white-text">

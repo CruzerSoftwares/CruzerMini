@@ -2,7 +2,6 @@
 namespace App\Modules\Webmaster\Models;
 
 class Banners extends App {
-	protected $table = 'tbl_banners';
 
 	public function actionAll(){
 	    $query = $this->db->from($this->table);

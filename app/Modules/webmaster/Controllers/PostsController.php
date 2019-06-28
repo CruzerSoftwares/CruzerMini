@@ -14,7 +14,7 @@ class PostsController extends AppController {
     }
 
     public function index(){
-        $data = Posts::all();
+        $data = Posts::get()->asArray();
 
         return $this->_view('posts.index', [
             'data'      => $data,
@@ -28,7 +28,7 @@ class PostsController extends AppController {
             $this->handleError('danger','Invalid Request');
         }
 
-        $data = Posts::get($alias);
+        $data = Posts::find($alias)->asArray();
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
@@ -46,8 +46,26 @@ class PostsController extends AppController {
 
         if( null !== _postData('submit') && ( _postData('submit') =='update' || _postData('submit')=='updateContinue') ){
             _checkCSRF();
-            
-            if( Posts::update() ){
+            $post = new Posts();
+            $alias               = _postData('alias');
+            if( $alias == '' ){
+                $alias = _slug(_postData('title'));
+            } else{
+                $alias = _slug($alias);
+            }
+
+            $post->title       = _postData('title');
+            $post->alias       = $alias;
+            $post->tags        = _postData('tags');
+            $post->description = _postData('description');
+            $post->image       = _postData('image');
+            $post->status      = _postData('status');
+            $post->id      = _postData('id');
+            $save = new \Dolphin\Mapper\Save();
+            var_dump($post);
+            $save->save($post);
+
+            if( $post::update() ){
                 _setFlash('success','Post has been updated successfully!');
 
                 if(_postData('submit')=='updateContinue'){
@@ -57,7 +75,7 @@ class PostsController extends AppController {
                 }
             } else{
                 _setFlash('error','Post cannot be added!');
-                $data = Posts::get($alias);
+                $data = Posts::find($alias)->asArray();
 
                 if( $data == '' || $data== null ){
                     $this->handleError('danger','Invalid Request');
@@ -70,7 +88,7 @@ class PostsController extends AppController {
             }
         }
 
-        $data = Posts::get($alias);
+        $data = Posts::find($alias)->asArray();
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');

@@ -20,7 +20,7 @@ class PagesController extends AppController {
     }
 
     public function index(){
-        $data = Pages::all();
+        $data = Pages::get()->asArray();
 
         return $this->_view('pages.index', [
             'data'      => $data,
@@ -34,11 +34,12 @@ class PagesController extends AppController {
             $this->handleError('danger','Invalid Request');
         }
 
-        $data = Pages::get($alias);
+        $data = Pages::find($alias)->asArray();
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
         }
+
         return $this->_view('pages.view', [
             'data'      => $data,
             'pageTitle' => $data['title']
@@ -76,7 +77,7 @@ class PagesController extends AppController {
             }
         }
 
-        $data = Pages::get($alias);
+        $data = Pages::find($alias)->asArray();
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
