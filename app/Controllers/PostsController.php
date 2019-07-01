@@ -8,7 +8,7 @@ class PostsController extends AppController {
     public function index(){
         
         return $this->_view('posts.index', [
-            'data'      => Posts::where('status=1')->getAsArray(),
+            'results'      => Posts::where('status=1')->get(),
             'pageTitle' => 'Blog Posts'
         ]);
     }
@@ -18,13 +18,13 @@ class PostsController extends AppController {
             $this->handleError('danger','Invalid Request');
         }
         
-        $data = Posts::select('id, title, description')->where('status=1')->where("alias= '".$alias."'")->first();
+        $data = Posts::select('id', 'title', 'image', 'description')->where('status=1')->where("alias= '".$alias."'")->first();
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
         }
         return $this->_view('posts.view', [
-            'data'      => $data,
+            'result'      => $data,
             'pageTitle' => $data->title
         ]);
     }

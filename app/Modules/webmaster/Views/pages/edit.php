@@ -12,9 +12,9 @@
                     <div class="right">
                     <a href="<?php __url(MODULE_ALIAS.'/pages');?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">list</i></a>
                     <a href="<?php __url(MODULE_ALIAS.'/pages/add');?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">add</i></a>
-                    <a href="<?php __url(MODULE_ALIAS.'/pages/view/'.$data['id']);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">visibility</i></a>
-                    <!-- <a href="<?php __url(MODULE_ALIAS.'/pages/delete/'.$data['id']);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">delete</i></a> -->
-                    <a href="<?php __url(MODULE_ALIAS.'/pages/edit/'.$data['id']);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">refresh</i></a>
+                    <a href="<?php __url(MODULE_ALIAS.'/pages/view/'.$result->id);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">visibility</i></a>
+                    <!-- <a href="<?php __url(MODULE_ALIAS.'/pages/delete/'.$result->id);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">delete</i></a> -->
+                    <a href="<?php __url(MODULE_ALIAS.'/pages/edit/'.$result->id);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">refresh</i></a>
                     </div>
                 </div>
             </div>
@@ -24,18 +24,18 @@
 
 <div class="card-panel">
   <div class="row">
-    <?php __form(MODULE_ALIAS.'/pages/edit/'.$data['id'], ['class' => 'col s12', 'target' => '_self', 'upload' => true]);?>
+    <?php __form(MODULE_ALIAS.'/pages/edit/'.$result->id, ['class' => 'col s12', 'target' => '_self', 'upload' => true]);?>
     
-        <input type="hidden" name="id" value="<?php __($data['id']);?>">
+        <input type="hidden" name="id" value="<?php __($result->id);?>">
         <div class="row">
             <div class="input-field col s12">
-                <input id="title" type="text" name="title" class="validate" value="<?php __($data['title']);?>">
+                <input id="title" type="text" name="title" class="validate" value="<?php __($result->title);?>">
                 <label for="title">Title</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="alias" type="text" name="alias" class="validate" value="<?php __($data['alias']);?>">
+                <input id="alias" type="text" name="alias" class="validate" value="<?php __($result->alias);?>">
                 <label for="alias">Search Engine Friendly URL</label>
             </div>
         </div>
@@ -46,12 +46,12 @@
                     <span>SELECT IMAGE <i class="material-icons right">image</i></span>
                 </div>
                 <div class="file-path-wrapper">
-                    <input id="image1" type="text" name="image" class="file-path validate" value="<?php __($data['image']);?>">
+                    <input id="image1" type="text" name="image" class="file-path validate" value="<?php __($result->image);?>">
                 </div>
             </div>
             <div class="input-field col s3">
-                <?php if(isset($data['image'])){?>
-                  <img class="materialboxed responsive-img" data-caption="A picture" alt="image" src="<?php __($data['image']);?>">
+                <?php if(isset($result->image)){?>
+                  <img class="materialboxed responsive-img" data-caption="A picture" alt="image" src="<?php __($result->image);?>">
               <?php }?>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <div class="input-field col s12">
                 <label for="description">Page Content</label>
                 <br/>
-               <textarea name="description" class="html-editor"><?php __($data['description'],false);?></textarea>
+               <textarea name="description" class="html-editor"><?php __($result->description,false);?></textarea>
             </div>
         </div>
       
@@ -68,34 +68,34 @@
             <div class="col s6">
                 <label for="description">Status</label>
                 <p>
-                    <input class="with-gap blue-text" name="status" type="radio" id="test3" value="1" <?php if($data['status']==1) __('checked');?> />
+                    <input class="with-gap blue-text" name="status" type="radio" id="test3" value="1" <?php if($result->status==1) __('checked');?> />
                     <label for="test3">Active</label>
                 </p>
                 <p>
-                    <input class="with-gap" name="status" type="radio" id="test4" value="0" <?php if($data['status']==0) __('checked');?> />
+                    <input class="with-gap" name="status" type="radio" id="test4" value="0" <?php if($result->status==0) __('checked');?> />
                     <label for="test4">Inactive</label>
                 </p>
             </div>
             <div class="input-field col s6">
                <select name="layout">
                   <option value="" disabled selected>Choose your option</option>
-                  <option value="1" <?php if($data['layout']==1) __('selected');?>>HTML</option>
-                  <option value="2" <?php if($data['layout']==2) __('selected');?>>Left Sidebar</option>
-                  <option value="3" <?php if($data['layout']==3) __('selected');?>>Right Sidebar</option>
-                  <option value="4" <?php if($data['layout']==4) __('selected');?>>Full Page</option>
+                  <option value="1" <?php if($result->layout==1) __('selected');?>>HTML</option>
+                  <option value="2" <?php if($result->layout==2) __('selected');?>>Left Sidebar</option>
+                  <option value="3" <?php if($result->layout==3) __('selected');?>>Right Sidebar</option>
+                  <option value="4" <?php if($result->layout==4) __('selected');?>>Full Page</option>
                 </select>
                 <label>Layout</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-               <textarea id="meta_description" name="meta_description" class="materialize-textarea"><?php __($data['meta_description']);?></textarea>
+               <textarea id="meta_description" name="meta_description" class="materialize-textarea"><?php __($result->meta_description);?></textarea>
                 <label for="meta_description">Meta Description</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-               <textarea id="meta_keywords" name="meta_keywords" class="materialize-textarea"><?php __($data['meta_keywords']);?></textarea>
+               <textarea id="meta_keywords" name="meta_keywords" class="materialize-textarea"><?php __($result->meta_keywords);?></textarea>
                 <label for="meta_keywords">Meta Keywords</label>
             </div>
         </div>

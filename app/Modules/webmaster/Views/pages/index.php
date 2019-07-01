@@ -32,15 +32,15 @@
         </thead>
 
         <tbody>
-            <?php foreach ( $data as $page ) {?>
+            <?php foreach ( $results->data as $page ) {?>
                 <tr>
-                    <td><?php __($page['id']);?></td>
-                    <td><?php __($page['title']);?></td>
-                    <td><?php __($page['created']);?></td>
+                    <td><?php __($page->id);?></td>
+                    <td><?php __($page->title);?></td>
+                    <td><?php __($page->created);?></td>
                     <td>
-                        <a href="<?php __url(MODULE_ALIAS.'/pages/view/'.$page['id']);?>" target="_self"><i class="material-icons dp48">visibility</i></a>
-                        <a href="<?php __url(MODULE_ALIAS.'/pages/edit/'.$page['id']);?>" target="_self"><i class="material-icons dp48">edit</i></a>
-                        <?php __form(MODULE_ALIAS.'/pages/delete/'.$page['id'], ['class' => 'col inline-form', 'target' => '_self', 'id' => 'page_'.$page['id']]);?>
+                        <a href="<?php __url(MODULE_ALIAS.'/pages/view/'.$page->id);?>" target="_self"><i class="material-icons dp48">visibility</i></a>
+                        <a href="<?php __url(MODULE_ALIAS.'/pages/edit/'.$page->id);?>" target="_self"><i class="material-icons dp48">edit</i></a>
+                        <?php __form(MODULE_ALIAS.'/pages/delete/'.$page->id, ['class' => 'col inline-form', 'target' => '_self', 'id' => 'page_'.$page->id]);?>
                             <input type="hidden" name="submit" value="delete">
                             <button type="submit" class="noborder" target="_self" onclick="return confirm('Do you really want to delete?');"><i class="material-icons dp48 red-text">delete</i></button>
                         </form>

@@ -20,10 +20,10 @@ class PagesController extends AppController {
     }
 
     public function index(){
-        $data = Pages::get()->asArray();
+        $data = Pages::get();
 
         return $this->_view('pages.index', [
-            'data'      => $data,
+            'results'      => $data,
             'pageTitle' => 'Pages'
         ]);
     }
@@ -34,15 +34,15 @@ class PagesController extends AppController {
             $this->handleError('danger','Invalid Request');
         }
 
-        $data = Pages::find($alias)->asArray();
+        $data = Pages::find($alias);
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
         }
 
         return $this->_view('pages.view', [
-            'data'      => $data,
-            'pageTitle' => $data['title']
+            'result'      => $data,
+            'pageTitle' => $data->title
         ]);
     }
 
@@ -77,15 +77,15 @@ class PagesController extends AppController {
             }
         }
 
-        $data = Pages::find($alias)->asArray();
+        $data = Pages::find($alias);
 
         if( $data == '' || $data== null ){
             $this->handleError('danger','Invalid Request');
         }
 
         return $this->_view('pages.edit', [
-            'data'      => $data,
-            'pageTitle' => $data['title']
+            'result'      => $data,
+            'pageTitle' => $data->title
         ]);
     }
 

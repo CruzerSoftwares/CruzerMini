@@ -12,9 +12,9 @@
                     <div class="right">
                         <a href="<?php __url(MODULE_ALIAS.'/pages');?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">list</i></a>
                         <a href="<?php __url(MODULE_ALIAS.'/pages/add');?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">add</i></a>
-                        <a href="<?php __url(MODULE_ALIAS.'/pages/edit/'.$data['id']);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">edit</i></a>
-                        <!-- <a href="<?php __url(MODULE_ALIAS.'/pages/delete/'.$data['id']);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">delete</i></a> -->
-                        <a href="<?php __url(MODULE_ALIAS.'/pages/view/'.$data['id']);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">refresh</i></a>
+                        <a href="<?php __url(MODULE_ALIAS.'/pages/edit/'.$result->id);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">edit</i></a>
+                        <!-- <a href="<?php __url(MODULE_ALIAS.'/pages/delete/'.$result->id);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">delete</i></a> -->
+                        <a href="<?php __url(MODULE_ALIAS.'/pages/view/'.$result->id);?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">refresh</i></a>
                     </div>
                 </div>
             </div>
@@ -26,43 +26,43 @@
                 <tbody>
                       <tr>
                           <th>Title</th>
-                          <td><?php __($data['title']);?></td>
+                          <td><?php __($result->title);?></td>
                       </tr>
                      <tr>
                           <th>Alias</th>
-                          <td><?php __($data['alias']);?></td>
+                          <td><?php __($result->alias);?></td>
                       </tr>
                      <tr>
                           <th style="vertical-align: top">Description</th>
-                          <td><?php __($data['description'],false);?></td>
+                          <td><?php __($result->description,false);?></td>
                       </tr>
                      <tr>
                           <th>Status</th>
-                          <td><?php __($data['status']==1 ? 'Active' : 'Inactive');?></td>
+                          <td><?php __($result->status==1 ? 'Active' : 'Inactive');?></td>
                       </tr>
                      <tr>
                           <th>Layout</th>
-                          <td><?php if($data['layout']==1) echo 'HTML';
-                                    elseif($data['layout']==2) echo 'Left Sidebar';
-                                    elseif($data['layout']==3) echo 'Right Sidebar';
-                                    elseif($data['layout']==4) echo 'Full Page';
+                          <td><?php if($result->layout==1) echo 'HTML';
+                                    elseif($result->layout==2) echo 'Left Sidebar';
+                                    elseif($result->layout==3) echo 'Right Sidebar';
+                                    elseif($result->layout==4) echo 'Full Page';
                                     ?></td>
                       </tr>
                      <tr>
                           <th>Meta Description</th>
-                          <td><?php __($data['meta_description']);?></td>
+                          <td><?php __($result->meta_description);?></td>
                       </tr>
                      <tr>
                           <th>Meta Keywords</th>
-                          <td><?php __($data['meta_keywords']);?></td>
+                          <td><?php __($result->meta_keywords);?></td>
                       </tr>
                      <tr>
                           <th>Image</th>
-                          <td><?php __($data['image']);?></td>
+                          <td><?php __($result->image);?></td>
                       </tr>
                      <tr>
                           <th>Created On</th>
-                          <td><?php __date($data['created']);?></td>
+                          <td><?php __date($result->created);?></td>
                       </tr>
                      
                   </tbody>
