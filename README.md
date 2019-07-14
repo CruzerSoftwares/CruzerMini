@@ -28,9 +28,14 @@ A lightweight PHP 7 Framework and CMS built with minimal dependencies to be fast
 
 ## Not yet Supported
 - Caching System
+- Plugin System
+- Code Editor Plugins
+- Image Editor Plugin
+- Export To Various Formats such as csv, excel, pdf, html, xml, json Plugin
+- User Role & Authorization Plugin
+- Multi Theme options
 - Markdown Editor
 - Database Management Tool
-- Multi Theme options
 - Use Markdown instead of Database
 - MongoDB support
 - Flat File Database Support
