@@ -85,6 +85,6 @@ CREATE TABLE tbl_users (
 
 
 INSERT INTO tbl_users (`id`, `first_name`, `last_name`, `email`, `password`, `image`, `status`, `created`, `created_by`, `groups`) 
-VALUES (1, 'Admin',  'G',  'admin@gmail.com',  '$2y$10$Svf4DKQ5RpWvFpKwb1mx7u0qXNtAIjyiyGb4wHOBQai8OUHlTHDsC', NULL, 1,  "2018-07-20 09:34:29",  1,  1);
+VALUES (1, 'Admin',  'G',  'admin@gmail.com',  '$2y$10$09aRZL6ciMoP6a9Vw2UpcuEKMDlckNWdovUa0EED8rRx7F4huiiRO', NULL, 1,  "2018-07-20 09:34:29",  1,  1);
 
 -- 

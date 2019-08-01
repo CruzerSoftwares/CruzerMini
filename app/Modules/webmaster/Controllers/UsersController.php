@@ -10,10 +10,9 @@ class UsersController extends AppController{
         $this->layout = 'login';
         
         if(isset($_POST['actiontask'])){
-            $data = Users::where('status=1')->where('email = :email',_postData('email'))->first()->asArray();
-            
-            if ($data !=null && password_verify(_postData('password'), $data['password'])) {
-                _setAuthSession($data);
+            $data = Users::where('status=1')->where('email = :email',_postData('email'))->first();
+            if ($data !=null && password_verify(_postData('password'), $data->password)) {
+                _setAuthSession(json_decode(json_encode($data), true));
                 _checkAuth(true, true);
             } else {
                 _setFlash('error', 'Invalid Email/Password!');
