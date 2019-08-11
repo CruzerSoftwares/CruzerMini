@@ -32,7 +32,8 @@
         </thead>
 
         <tbody>
-            <?php foreach ( $results->data as $page ) {?>
+             <?php if(isset($data) && count($data) ){
+                foreach ( $results->data as $page ) {?>
                 <tr>
                     <td><?php __($page->id);?></td>
                     <td><?php __($page->title);?></td>
@@ -46,7 +47,10 @@
                         </form>
                     </td>
                 </tr>
-            <?php }?>
+            <?php }
+            } else{
+                echo '<tr><td colspan="4">No Record found!</td></tr>';
+            }?>
         </tbody>
       </table>
 
