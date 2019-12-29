@@ -5,7 +5,7 @@ use App\Modules\Webmaster\Models;
 use App\Modules\Webmaster\Models\Pages as Pages;
 
 class PagesController extends AppController {
-    
+
     private $model;
 
     public function __construct(){
@@ -20,10 +20,10 @@ class PagesController extends AppController {
     }
 
     public function index(){
-        $data = Pages::get();
+        $data = Pages::all();
 
         return $this->_view('pages.index', [
-            'results'      => $data,
+            'data'   => $data,
             'pageTitle' => 'Pages'
         ]);
     }
@@ -53,18 +53,39 @@ class PagesController extends AppController {
 
         if( null !== _postData('submit') && ( _postData('submit') =='update' || _postData('submit')=='updateContinue') ){
             _checkCSRF();
-            
-            if( Pages::update() ){
+
+            $alias               = _postData('alias');
+
+        		if( $alias == '' ){
+                $alias = _slug(_postData('title'));
+            } else{
+                $alias = _slug($alias);
+            }
+
+        		$values = [
+        			'title'            => _postData('title'),
+        			'alias'            => $alias,
+        			'description'      => _postData('description'),
+        			'image'            => _postData('image'),
+        			'status'           => _postData('status'),
+        			'meta_description' => _postData('meta_description'),
+        			'meta_keywords'    => _postData('meta_keywords'),
+        			'layout'           => _postData('layout'),
+        		];
+
+        		$updated = Pages::where('id', _postData('id'))->update($values);
+
+            if( $updated ){
                 _setFlash('success','Page has been updated successfully!');
 
                 if(_postData('submit')=='updateContinue'){
                     _redirect( _config('APP_URL').MODULE_ALIAS.'/pages/edit/'._postData('id'));
                 } else{
-                   _redirect( _config('APP_URL').MODULE_ALIAS.'/pages'); 
+                   _redirect( _config('APP_URL').MODULE_ALIAS.'/pages');
                 }
             } else{
                 _setFlash('error','Page cannot be added!');
-                $data = Pages::get($alias);
+                $data = Pages::where('alias',$alias);
 
                 if( $data == '' || $data== null ){
                     $this->handleError('danger','Invalid Request');
@@ -99,7 +120,7 @@ class PagesController extends AppController {
                 if(_postData('submit')=='addContinue'){
                     _redirect( _config('APP_URL').MODULE_ALIAS.'/pages/add');
                 } else{
-                   _redirect( _config('APP_URL').MODULE_ALIAS.'/pages'); 
+                   _redirect( _config('APP_URL').MODULE_ALIAS.'/pages');
                 }
             } else{
                 _setFlash('error','Page cannot be added!');

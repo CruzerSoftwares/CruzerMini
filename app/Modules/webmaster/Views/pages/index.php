@@ -6,7 +6,7 @@
                 <a href="<?php __url(MODULE_ALIAS);?>" class="breadcrumb" target="_self"><i class="material-icons">home</i> Dashboard</a>
                 <a class="breadcrumb">Pages</a>
             </div>
-            
+
             <div class="col s3 nobreadcrumbs ">
                 <div class="right">
                     <a href="<?php __url(MODULE_ALIAS.'/pages/add');?>" class="blue btn-floating pulse" target="_self"><i class="material-icons small-icons">add</i></a>
@@ -33,7 +33,7 @@
 
         <tbody>
              <?php if(isset($data) && count($data) ){
-                foreach ( $results->data as $page ) {?>
+                foreach ( $data as $page ) {?>
                 <tr>
                     <td><?php __($page->id);?></td>
                     <td><?php __($page->title);?></td>
@@ -63,7 +63,7 @@
     <li class="waves-effect"><a href="#!">5</a></li>
     <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
   </ul>
-            
+
 </div>
     </div>
 </div>

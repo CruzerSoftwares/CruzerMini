@@ -18,20 +18,21 @@ class Routes
 
     protected $routes;
     protected $routePrefix;
+    protected $loadedModules;
 
     /**
      * Initialize the Route
      */
     public function __construct()
     {
+      $this->loadedModules = $GLOBALS['loadedModules'];
     }
 
     protected function checkModule($uri = '')
     {
-        global $loadedModules;
         $uriAr = explode('/', $uri);
-        
-        if (array_key_exists($uriAr[1], $loadedModules)) {
+
+        if (array_key_exists($uriAr[1], $this->loadedModules)) {
             return true;
         }
         return false;
@@ -39,11 +40,10 @@ class Routes
 
     protected function getModuleDir($uri = '')
     {
-        global $loadedModules;
         $uriAr = explode('/', $uri);
-        
-        if (array_key_exists($uriAr[1], $loadedModules)) {
-            return $loadedModules[$uriAr[1]];
+
+        if (array_key_exists($uriAr[1], $this->loadedModules)) {
+            return $this->loadedModules[$uriAr[1]];
         }
         return;
     }

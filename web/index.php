@@ -1,9 +1,9 @@
-<?php 
+<?php
 /**
  * Handle the requests and serve the response for CruzerMini App
  *
  * PHP version 7.2
- * 
+ *
  * @category  PHP
  * @package   Core
  * @author    RN Kushwaha <Rn.kushwaha022@gmail.com>
@@ -32,7 +32,6 @@ define('LOG_DIR', '../log');
 $cruzerHandler = new Cruzer\Framework\Handler();
 $cruzerHandler->initilize();
 
-require_once APP_DIR.DS."Config".DS."app.php";
+$GLOBALS['loadedModules'] = require_once APP_DIR.DS."Config".DS."app.php";
 $routes = require_once APP_DIR.DS."Config".DS."routes.php";
 $routes->serve(basename(__DIR__), $_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
-

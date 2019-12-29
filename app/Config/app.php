@@ -1,5 +1,5 @@
 <?php
 
-$loadedModules = [ 'webpanel' => 'webmaster' ];
-
-return $loadedModules;
+return [
+          'webpanel' => 'webmaster'
+       ];

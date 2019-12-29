@@ -6,9 +6,9 @@ use App\Models\Pages;
 class PagesController extends AppController {
 
     public function index(){
-
+      // _pr(Pages::select('description')->where("alias", 'home')->first());die;
         return $this->_view('pages.home', [
-            'data'      => Pages::select('description')->where("alias = 'home'")->first(),
+            'data'      => Pages::select('description')->where("alias", 'home')->first(),
             'pageTitle' => APP_TITLE
         ]);
     }
@@ -17,10 +17,10 @@ class PagesController extends AppController {
         if( $alias == '' ){
             $this->handleError('danger','Invalid Request');
         }
-        
-        $data = Pages::where("alias = '".$alias."'")->first();
 
-        if( $data == '' || $data== null ){
+        $data = Pages::where("alias", $alias)->first();
+
+        if( !isset($data->id) ){
             $this->handleError('danger','Invalid Request');
         }
         return $this->_view('pages.view', [
@@ -32,7 +32,7 @@ class PagesController extends AppController {
 
     public function contact(){
         return $this->_view('pages.contact', [
-            'data' =>  Pages::where("alias = 'contact-us'")->first(),
+            'data' =>  Pages::where("alias", 'contact-us')->first(),
             'pageTitle' => 'Contact Us'
         ]);
     }
@@ -52,7 +52,7 @@ class PagesController extends AppController {
         _setFlash('success','Your message has been sent successfully!', false);
 
         return $this->_view('pages.contact', [
-            'data' =>  Pages::where("alias = 'contact-us'")->first(),
+            'data' =>  Pages::where("alias", 'contact-us')->first(),
             'pageTitle' => 'Contact Us'
         ]);
     }
