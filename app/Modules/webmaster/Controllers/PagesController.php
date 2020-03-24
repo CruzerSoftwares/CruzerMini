@@ -139,7 +139,7 @@ class PagesController extends AppController {
         if( null !== _postData('submit') && _postData('submit')=='delete' ){
             _checkCSRF();
 
-            if( Pages::delete( $id )){
+            if( Pages::where('id', $id)->delete()){
                 _setFlash('success','Page has been deleted successfully!');
             } else{
                 _setFlash('success','Page cannot be deleted!');

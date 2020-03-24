@@ -15,19 +15,19 @@ if (!function_exists('_date')) {
         if ($datetime == null || $datetime=='' || $datetime=='0000-00-00' || $datetime=='0000-00-00 00:00:00') {
             return;
         }
+
         if ($time === true) {
             if ($format == null) {
                 return date(DATETIMEFORMAT, strtotime($datetime));
-            } else {
-                return date($format, strtotime($datetime));
             }
-        } else {
-            if ($format == null) {
-                return date(DATEFORMAT, strtotime($datetime));
-            } else {
-                return date($format, strtotime($datetime));
-            }
+            return date($format, strtotime($datetime));
         }
+
+        if ($format == null) {
+            return date(DATEFORMAT, strtotime($datetime));
+        }
+
+        return date($format, strtotime($datetime));
     }
 }
 
@@ -70,10 +70,9 @@ if (!function_exists('_config')) {
 if (!function_exists('humanTiming')) {
     function humanTiming($time, $reseverse = false)
     {
+        $time = time() - strtotime($time);
         if ($reseverse === true) {
             $time = strtotime($time) - time();
-        } else {
-            $time = time() - strtotime($time);
         }
 
         $time = ($time<1)? 1 : $time;
@@ -183,12 +182,11 @@ if (!function_exists('_')) {
         if (func_num_args()==2) {
             if ($print) {
                 echo htmlspecialchars($string);
-            } else {
-                 return htmlspecialchars($string);
             }
-        } else {
             return htmlspecialchars($string);
         }
+
+        return htmlspecialchars($string);
     }
 }
 
@@ -197,9 +195,8 @@ if (!function_exists('__')) {
     {
         if ($escape === true) {
             echo htmlspecialchars($string);
-        } else {
-            echo $string;
         }
+        echo $string;
     }
 }
 
@@ -210,9 +207,8 @@ if (!function_exists('_form')) {
 
         if (isset($options) && isset($options['method'])) {
             $form.= ' method="'.$options['method'].'" ';
-        } else {
-            $form.= ' method="POST" ';
         }
+        $form.= ' method="POST" ';
 
         if (isset($options) && isset($options['upload'])) {
             $form.= ' enctype="multipart/form-data" ';
@@ -402,7 +398,7 @@ if (!function_exists('__js')) {
 if (!function_exists('_auth')) {
     function _auth($backend = true)
     {
-        $for     = ($backend === true ? 'backend' : 'frontend');
+        $for = ($backend === true ? 'backend' : 'frontend');
 
         if (isset($_SESSION[$for]) &&
             isset($_SESSION[$for]['auth']) &&
@@ -427,9 +423,8 @@ if (!function_exists('_checkAuth')) {
                 )) {
                     _redirect(_config('APP_URL')._config('ADMIN_LOGOUT_REDIRECT'));
                 }
-            } else {
-                _redirect(_config('APP_URL')._config('LOGOUT_REDIRECT'));
             }
+            _redirect(_config('APP_URL')._config('LOGOUT_REDIRECT'));
         }
 
         if (_auth($backend) === true) {
@@ -509,7 +504,7 @@ if (!function_exists('_flashSession')) {
         $for     = ($backend === true ? 'backend' : 'frontend');
         $session = array();
         $str     = '';
-        
+
         if (isset($_SESSION[$for]) &&  isset($_SESSION[$for]['flash'])) {
             $session = $_SESSION[$for]['flash'];
         }
@@ -576,7 +571,7 @@ if (!function_exists('_redirect')) {
         if ($url=='back') {
             $url = $_SERVER['HTTP_REFERER'];
         }
-        header($_SERVER["SERVER_PROTOCOL"]." $code"); 
+        header($_SERVER["SERVER_PROTOCOL"]." $code");
         header("Location: ".$url);
         exit();
     }
@@ -602,7 +597,7 @@ if (!function_exists('_numberToCurrency')) {
         if (setlocale(LC_MONETARY, 'en_IN')) {
             return money_format('%.0n', $num);
         }
-        
+
         $explrestunits = "" ;
         if (strlen($num)>3) {
             $lastthree = substr($num, strlen($num)-3, strlen($num));
@@ -709,7 +704,7 @@ if (!function_exists('_requestData')) {
                 if ($from[$var]== '') {
                     return $default;
                 }
-                
+
                 return $from[$var];
             } else {
                 if ($from[$var]== '') {
@@ -719,7 +714,7 @@ if (!function_exists('_requestData')) {
                 return $from[$var];
             }
         }
-        
+
         $retVal = _formatVarFromSource($from, $var, $default, $format );
         return $retVal;
     }
